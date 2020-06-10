@@ -1,5 +1,4 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
-import Category from "discourse/models/category";
 
 export default {
   name: "default-composer-category",
@@ -11,11 +10,10 @@ export default {
           if (!opts) opts = {};
 
           if (!opts.categoryId && settings.default_composer_category_id) {
-            opts.categoryId = settings.default_composer_category_id;
-            const category = this.site.categoriesById[opts.categoryId];
-            if (category) {
-              this.set("category", category);
-            }
+            opts.categoryId = parseInt(
+              settings.default_composer_category_id,
+              10
+            );
           }
 
           return this._super(...arguments);
