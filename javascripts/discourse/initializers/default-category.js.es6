@@ -6,8 +6,14 @@ export default {
   initialize() {
     withPluginApi("0.8.36", (api) => {
       api.modifyClass("model:composer", {
+        pluginId: "default-composer-category",
+
         open(opts) {
           if (!opts) opts = {};
+
+          if (opts.action === "reply") {
+            return this._super(...arguments);
+          }
 
           if (!opts.categoryId && settings.default_composer_category_id) {
             opts.categoryId = parseInt(
