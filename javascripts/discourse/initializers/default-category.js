@@ -9,7 +9,7 @@ export default {
         pluginId: "default-composer-category",
 
         open(opts) {
-          if (!opts) opts = {};
+          opts ||= {};
 
           if (opts.action === "reply") {
             return this._super(...arguments);
