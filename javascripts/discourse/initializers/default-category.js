@@ -4,7 +4,7 @@ export default {
   name: "default-composer-category",
 
   initialize() {
-    withPluginApi("0.8.36", (api) => {
+    withPluginApi((api) => {
       api.modifyClass("model:composer", {
         pluginId: "default-composer-category",
 
